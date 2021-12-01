@@ -225,7 +225,7 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
 }
 ```
 
-`validate`메소드로 추가한 유저 정보를 `req.user`로 가져오는 대신, `GetUser` 데코레이터를 이용해 가져오는 방법을 택했습니다. 컨트롤러에서 Request 를 통쨰로 선언해 user 를 가져오는 것보다 유저의 정보만을 가져오는 것이 더 깔끔하다고 생각해서입니다.
+`validate`메소드로 추가한 유저 정보를 `req.user`로 가져오는 대신, 다른 팀원의 조언에 따라 `GetUser` 데코레이터로 가져오는 방법을 택했습니다. 다만, GraphQL 으로 구현한 API 였다면 `ExecutionContext`의 내용을 http 에서 GraphQL 형식으로 교체하는 목적으로 이 데코레이터를 사용했을텐데, REST API 로 작성한 이번 프로젝트에서는 `req.user`로 가져오는 것이 더 간편하지 않을지 생각합니다.
 
 ```typescript
 import { createParamDecorator, ExecutionContext } from '@nestjs/common';
